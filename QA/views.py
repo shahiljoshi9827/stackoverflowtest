@@ -9,7 +9,9 @@ from QA.serializers import QuestionSerializer, AnswerSerializer, QuestionTagSeri
 
 
 class QuestionView(generics.ListCreateAPIView):
-
+    """
+     this view is used to get all questions and create a new question with tag
+    """
     serializer_class = QuestionSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = [TokenAuthentication]
@@ -31,6 +33,9 @@ class QuestionView(generics.ListCreateAPIView):
 
 
 class QuestionDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+     this view is used to get question details, update question details
+    """
     serializer_class = QuestionSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = [TokenAuthentication]
@@ -50,6 +55,10 @@ class QuestionDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AnswerView(generics.ListCreateAPIView):
+    """
+        this view is used to get all answers and create a new answer and it will sends notification to question owner
+    """
+
     serializer_class = AnswerSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = [TokenAuthentication]
@@ -67,6 +76,9 @@ class AnswerView(generics.ListCreateAPIView):
 
 
 class AnswerDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+        this view is used to get answer details, update answer details
+    """
     serializer_class = AnswerSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = [TokenAuthentication]
@@ -86,6 +98,9 @@ class AnswerDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AcceptAnswerView(generics.RetrieveUpdateDestroyAPIView):
+    """
+        this view is used to accept answer and it will send email to answer owner
+    """
     serializer_class = AnswerSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = [TokenAuthentication]
@@ -108,6 +123,9 @@ class AcceptAnswerView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class QuestionTagView(generics.RetrieveAPIView):
+    """
+        this view is used to get all questions from tag name
+    """
     serializer_class = QuestionTagSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = [TokenAuthentication]
@@ -121,6 +139,9 @@ class QuestionTagView(generics.RetrieveAPIView):
 
 
 class QuestionUserView(generics.RetrieveAPIView):
+    """
+        this view is used to get all questions from logged in user
+    """
     serializer_class = QuestionSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = [TokenAuthentication]
@@ -134,6 +155,9 @@ class QuestionUserView(generics.RetrieveAPIView):
 
 
 class QuestionUserUpvoteDownvoteView(generics.CreateAPIView):
+    """
+        this view is used to upvote or downvote a question
+    """
     permission_classes = (IsAuthenticated,)
     authentication_classes = [TokenAuthentication]
 
@@ -154,6 +178,9 @@ class QuestionUserUpvoteDownvoteView(generics.CreateAPIView):
 
 
 class AnswerUserUpvoteDownvoteView(generics.CreateAPIView):
+    """
+        this view is used to upvote or downvote a answer
+    """
     permission_classes = (IsAuthenticated,)
     authentication_classes = [TokenAuthentication]
 
