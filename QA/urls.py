@@ -1,7 +1,7 @@
 from django.urls import path
 
 from QA.views import QuestionView, QuestionDetailView, AnswerView, AnswerDetailView, AcceptAnswerView, QuestionTagView, \
-    QuestionUserView
+    QuestionUserView, QuestionUserUpvoteDownvoteView, AnswerUserUpvoteDownvoteView
 
 urlpatterns = [
     path('question/', QuestionView.as_view(), name='question'),
@@ -11,4 +11,7 @@ urlpatterns = [
     path('accept-answer/<int:pk>/<int:question_id>', AcceptAnswerView.as_view(), name='accept-answer'),
     path('question-tag/<str:tag>/', QuestionTagView.as_view(), name='question-tag'),
     path('question-user/', QuestionUserView.as_view(), name='question-user'),
+    path('question-vote/<int:id>/', QuestionUserUpvoteDownvoteView.as_view(), name='question-votes'),
+    path('answer-vote/<int:id>/', AnswerUserUpvoteDownvoteView.as_view(), name='answer-votes'),
+
 ]
